@@ -1,7 +1,7 @@
 
 import {useEffect, useMemo, useState} from "react";
 import {Avatar, Box, Card, CardContent, CardHeader, Divider, Paper, styled, Typography} from "@mui/material";
-import Masonry from "@mui/lab/Masonry";
+import {Masonry} from "@mui/lab";
 
 type Menu = {
     id: string,
@@ -14,27 +14,12 @@ type Menu = {
 }
 
 export default function MenuList() {
-    // const [menus, setMenu] = useState<Menu[]>([]);
-    //
-    // useEffect(() => {
-    //     const getMenu = async () =>{
-    //         try{
-    //             const response = await fetch("api/list-menu");
-    //             if (!response.ok) {
-    //                 alert("Failed to fetch post");
-    //                 return;
-    //             }
-    //
-    //             const data = await response.json();
-    //             setMenu(data.records);
-    //         } catch{
-    //             console.error("e");
-    //             setMenu([]);
-    //         }
-    //     };
-    //
-    //     getMenu();
-    // },[])
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: "#fff",
+        ...theme.typography.body2,
+        padding: theme.spacing(2),
+    }));
 
     const [menus, setMenuList] = useState<Menu[]>([]);
 
@@ -47,8 +32,8 @@ export default function MenuList() {
                 return;
             }
             const data = await response.json();
-            setMenuList(data.records);
-            console.log(data.records);
+            setMenuList(data);
+            console.log(data);
         }
         reloadPostList();
     }, [])
@@ -76,30 +61,19 @@ export default function MenuList() {
                     backgroundColor: "white",
                 }}
             >
-                {menus.map((menu) => (
-                    <Card
-                        key={menu.id} sx={{
-                        width: 400,
-                        height: 200,
-                        boxShadow: 5,
-                        cursor: "pointer"
-                    }}
-                    >
-                        <CardHeader
-                            title={menu.nama}
-                        />
-                        <Divider />
-                        <CardContent>
-                            <Typography variant="body2" sx={{
-                                color: 'text.secondary',
-                                maxHeight: "100px",
-                                overflow: "auto"
-                            }}>
-                                {menu.deskripsi}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                ))}
+                <Box sx={{width: "100%", minHeight: "100vh", padding: 2}}>
+                    <Masonry columns={4} spacing={2}>
+                        {menus.map((menu) => (
+                            <Item key={menu.id} style={{backgroundColor: "white", borderColor: "darkgray"}}>
+                                <h3>{menu.nama}</h3>
+                                <p>{menu.deskripsi}</p>
+                                <button>
+                                    Detail
+                                </button>
+                            </Item>
+                        ))}
+                    </Masonry>
+                </Box>
             </div>
         </>
     )
