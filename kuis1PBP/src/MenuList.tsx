@@ -1,7 +1,8 @@
 
-import {useEffect, useMemo, useState} from "react";
-import {Avatar, Box, Card, CardContent, CardHeader, Divider, Paper, styled, Typography} from "@mui/material";
+import {useEffect,useState} from "react";
+import {Box, Paper, styled} from "@mui/material";
 import {Masonry} from "@mui/lab";
+import {useNavigate} from "react-router";
 
 type Menu = {
     id: string,
@@ -22,7 +23,7 @@ export default function MenuList() {
     }));
 
     const [menus, setMenuList] = useState<Menu[]>([]);
-
+    const navigate = useNavigate();
     useEffect(() => {
         const reloadPostList = async () => {
             const response = await fetch("api/list-menu" +
@@ -37,6 +38,10 @@ export default function MenuList() {
         }
         reloadPostList();
     }, [])
+
+    const goToMenu = (id: string) => {
+        navigate(`/menu/${id}`);
+    };
 
     return (
         <><div
@@ -67,9 +72,10 @@ export default function MenuList() {
                             <Item key={menu.id} style={{backgroundColor: "white", borderColor: "darkgray"}}>
                                 <h3>{menu.nama}</h3>
                                 <p>{menu.deskripsi}</p>
-                                <button>
+                                <button onClick={() =>goToMenu(menu.id)}>
                                     Detail
-                                </button>
+                                </button>npm install @react-navigation/native
+
                             </Item>
                         ))}
                     </Masonry>

@@ -23,6 +23,12 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^2.11.2
         version: 2.11.2(react-redux@9.2.0(@types/react@19.2.14)(react@19.2.4)(redux@5.0.1))(react@19.2.4)
+      navigate:
+        specifier: ^0.3.6
+        version: 0.3.6
+      navigator:
+        specifier: ^1.0.1
+        version: 1.0.1
       react:
         specifier: ^19.2.0
         version: 19.2.4
@@ -1163,6 +1169,13 @@ packages:
 
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
+
+  navigate@0.3.6:
+    resolution: {integrity: sha512-2m4e51H3BFTRs3xEWTZDRw+0QByI6245oDGQyubaEJNI0R/Htf6Oh4Hw6VH5dsWYD82iAwpnanXDmECKEuXPGQ==}
+
+  navigator@1.0.1:
+    resolution: {integrity: sha512-fSy6/kUueQt6Ecr3w81rB+gWPRcf0WvzOodfV9EaYGZzCr2wk+3kwvfovMLDSxucKXBZ+jldOilWd6ZrIha4Jw==}
+    engines: {node: '>= v0.2.0'}
 
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
@@ -2513,6 +2526,10 @@ snapshots:
   nanoid@3.3.11: {}
 
   natural-compare@1.4.0: {}
+
+  navigate@0.3.6: {}
+
+  navigator@1.0.1: {}
 
   node-releases@2.0.27: {}
 
